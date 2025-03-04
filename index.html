@@ -1,80 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Digital Signage</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            background-color: black;
-            display: grid;
-            grid-template-rows: auto 1fr;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 10px;
-            height: 100vh;
-            margin: 0;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        .left {
-            background-color: black;
-            color: aliceblue;
-            padding: 10px;
-            overflow: auto;
-            grid-row: 1;
-            grid-column:1;
-        }
-        
-        .right {
-            background-color: black;
-            color: aliceblue;
-            padding: 10px;
-            overflow: auto;
-            grid-row: 1;
-            grid-column:3;
-        }
-        
-        .footer {
-            background-color: black;
-            color: aliceblue;
-            padding: 10px;
-            overflow: auto;
-            grid-row: 2;
-            grid-column:1/4;
-        }
-        .presentation-frame {
-            grid-column: 2;
-            grid-row: 1/2;
-            grid            border: 0px solid #ccc;
-        }
-        #time {
-            font-size: 400%
-        }
-        iframe {
-            width: 1280px;
-            height: 750px;
-            border: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <style>
+    body {
+      background-image: url(images/Background.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size:cover;
+      font-family: sans-serif;
+      background-color: black;
+      text-align: center;
+      color: lightcyan;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 10px;
+    }
+    .left, .center, .right {
+        display:block;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .left { 
+    }
+
+    .center {
+    }
+
+    .right {
+    }
+
+
+    #time {
+      font-size: 75px;
+      display:block;
+      margin: 10px ;
+    }
+    
+    table{
+      border-collapse:separate;
+      border-radius:15px;
+      margin:10px auto;
+      width:330px;
+      filter: drop-shadow(0px 10px 15px darkcyan);
+      
+      
+    }
+    .dataTable{
+      border-spacing: 5px 15px;
+    }
+    .tableHeader {
+      border-collapse:separate;
+      border-top-left-radius:15px;
+      border-bottom-left-radius:15px;
+      padding:10px;
+      background-color: darkcyan;
+      color: lightcyan;
+    text-align: left;
+      height: 40px;
+      border:solid px white;
+      
+    }
+    .tableInfo{
+            border-collapse:separate;
+      border-top-right-radius:15px;
+      border-bottom-right-radius:15px;
+      padding:10px;
+      background-color: lightcyan;
+      color:darkcyan;
+      text-align: right;
+      height: 40px;
+      border-right:solid 4px darkcyan;
+      border-top:solid 4px darkcyan;
+      border-bottom:solid 4px darkcyan;
+    }
+    .description{
+      border-top-left-radius:15px;
+      border-top-right-radius:15px;
+      border-collapse:separate;
+      height:60px;
+      text-align:center;
+      background-color: darkcyan;
+      color: lightcyan;;
+      border:solid 4px darkcyan;
+    }
+    .descriptionIconBox{
+      
+      border-bottom-left-radius:15px;
+      border-bottom-right-radius:15px;
+      border-collapse:separate;
+      height:60px;
+      text-align:center;
+      background-color:lightcyan;
+      color:darkcyan;
+      border-right:solid 4px darkcyan;
+      border-left:solid 4px darkcyan;
+      border-bottom:solid 4px darkcyan;
+    }
+    .descriptionIcon{
+      filter: drop-shadow(0px 0px 15px darkcyan);
+    }
+    .clock{
+      border-collapse:separate;
+      border-radius:15px;
+      margin:0px auto;
+      width:330px;
+      border:solid 4px darkcyan;
+      background-color:lightcyan;
+      color:darkcyan;
+    }
+    #weather-container {
+      text-transform: capitalize;
+        font-size:25px;
+      
+    }
+    .busses
+    {
+      border-collapse:separate;
+      border-radius:15px;
+      margin:0px auto;
+      width:330px;
+      border:solid 4px darkcyan;
+      background-color:lightcyan;
+      color:darkcyan;
+    }
+    .busRoute{
+      font-size:24pt;
+      background-color: darkcyan;
+      color: lightcyan;
+      border: solid 5px;
+      padding:10px;
+      
+    }
+    .busDestination{
+      font-size:24pt;
+    }
+    .busTime{
+      font-size: 18pt
+    }
+  </style>
 </head>
 <body>
-    <div class="left"> Top Text Area (Editable)</div>
-     <div class="presentation-frame">
-        <!-- Replace the URL below with a link to your PowerPoint presentation viewer -->
-        <iframe title="GSlides" src="https://docs.google.com/presentation/d/e/2PACX-1vTtzOIO0VcpInXjYWMkHjy8xB706LvVTxVKJ0dOsgXY9kBQYQ2VVFWJkn3DD6U-QRSZ5Z2_VUEVK4G-/embed?start=true&loop=true&delayms=5000" width="1440" height="839" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+  <div class="left">
+
+    <div id="weather-container">
+      <div id="weather-data"></div>
     </div>
-    <div class="right"><h1>The Current Time</h1>
-    <p id="time"></p>
-  <div id="weather-container">
-    <h2>Weather Information</h2>
-    <div id="weather-data"></div>
+  </div>
+  <div class="center">
+    <img src="images/TRS.jpg" width=940px>
+  </div>
+<div class="right">
+  <div id="time"></div>
+  <div id="bus-times">
+  <div id="bus-timesNB"></div>
+  <div id="bus-timesSB"></div>
   </div>
 
-  <script src="weather.js"></script></div>
-   
-    <div class="footer">Right Text Area (Editable)</div>
+</div>
+  
+  
+  <script src="weather.js"></script>
 </body>
 </html>
-
-<!-- Let me know if you want to add a bottom text area or any customizations! -->
